@@ -135,9 +135,9 @@ summaryWeekend <- tapply(weekendData$steps, weekendData$interval, FUN=mean)
 par(mfrow=c(2,1))
 MeanStepsWeekday <- array(summaryWeekday)
 TimeIntervals <- dimnames(summaryWeekday)[[1]]
-plot(TimeIntervals, MeanStepsWeekday, type="l")
+plot(TimeIntervals, MeanStepsWeekday, type="l",main="Weekday")
 MeanStepsWeekend <- array(summaryWeekend)
 TimeIntervals <- dimnames(summaryWeekend)[[1]]
-plot(TimeIntervals, MeanStepsWeekend, type="l")
+plot(TimeIntervals, MeanStepsWeekend, type="l",main="Weekend")
 ```
 
