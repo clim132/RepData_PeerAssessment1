@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 This document describes the processing of the activity monitoring data of an individual.  Data is taken from https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip on Sep 18 2015.  It is then unzipped into a single .csv file.  
 
@@ -33,10 +28,10 @@ sum(dataset$steps, na.rm=TRUE)
 ```r
 summary <- tapply(dataset$steps, dataset$date, FUN=sum)
 stepsPerDay <- array(summary)
-hist(stepsPerDay)
+hist(stepsPerDay, main="Histogram of average steps per day (Original data)")
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
 
 3a.  Mean of total number of steps taken each day - ignore missing values
 
@@ -71,10 +66,10 @@ median(stepsPerDay, na.rm=TRUE)
 summary2 <- tapply(dataset$steps, dataset$interval, FUN=mean, na.rm=TRUE)
 MeanSteps <- array(summary2)
 TimeIntervals <- dimnames(summary2)[[1]]
-plot(TimeIntervals, MeanSteps, type="l")
+plot(TimeIntervals, MeanSteps, type="l", main="Time series plot (Original data)")
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 2.  5-min interval with max number of steps on average
 
@@ -138,10 +133,10 @@ head(dataset2)
 ```r
 summary3 <- tapply(dataset2$steps, dataset2$date, FUN=sum)
 stepsPerDay3 <- array(summary3)
-hist(stepsPerDay3)
+hist(stepsPerDay3, main="Histogram of avg steps per day (Cleaned-up data)")
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-10-1.png) 
 
 Histogram now looks different.
 
@@ -213,5 +208,5 @@ TimeIntervals <- dimnames(summaryWeekend)[[1]]
 plot(TimeIntervals, MeanStepsWeekend, type="l",main="Weekend")
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-14-1.png) 
 
